@@ -119,3 +119,42 @@ java.io.FileNotFoundException: C:\Code\Mikrodatorteknik\Labbar\Lab0_Blinky\Debug
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-09-03 13:58:53.950
 !MESSAGE Indexed 'lab1_tarning' (23 sources, 82 headers) in 5.77 sec: 5,348 declarations; 28,158 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
+!SESSION 2025-09-03 14:18:45.518 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-03 14:19:14.795
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-03 14:19:14.797
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-03 14:19:23.395
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-03 14:20:19.415
+!MESSAGE Indexed 'lab1_tarning' (23 sources, 117 headers) in 11.9 sec: 11,399 declarations; 50,587 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.28%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-03 14:20:26.014
+!MESSAGE Indexed 'lab1_tarning' (23 sources, 117 headers) in 5.12 sec: 11,399 declarations; 50,587 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.28%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-03 14:20:46.571
+!MESSAGE Indexed 'lab1_tarning' (23 sources, 117 headers) in 3.99 sec: 11,399 declarations; 50,587 references; 3 unresolved inclusions; 46 syntax errors; 171 unresolved names (0.28%)
+!SESSION 2025-09-03 14:21:51.155 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-03 14:22:12.880
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-03 14:22:12.882
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-03 14:22:21.894
+!MESSAGE Started RMI Server, listening on port 41337
