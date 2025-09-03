@@ -116,3 +116,6 @@ java.io.FileNotFoundException: C:\Code\Mikrodatorteknik\Labbar\Lab0_Blinky\Debug
 	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1054)
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1257)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-03 13:58:53.950
+!MESSAGE Indexed 'lab1_tarning' (23 sources, 82 headers) in 5.77 sec: 5,348 declarations; 28,158 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
