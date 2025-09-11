@@ -43,7 +43,7 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+int pressed = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -51,7 +51,10 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+int is_blue_button_pressed()
+{
+	return 0;
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -97,6 +100,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  // pressed = HAL_GPIO_Read_Pin(B1_GPIO_port, B1_Pin);
+
+	  GPIOB -> MODER;
+
+	  if (pressed)
+	  {
+		  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+	  }
+	  else
+	  {
+		  GPIO_TypeDef* ld4_gpio = GPIOB;
+		  unit16_t		ld4_pin_nbr = 13;
+		  unit16_t		ld4_pin		= 0x01 << ld4_pin_nbr;
+		  HAL_GPIO_WritePin(ld4_gpio, ld4_pin, GPIO_PIN_RESET);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -207,7 +225,9 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, SMPS_EN_Pin|SMPS_V1_Pin|SMPS_SW_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DI_G_Pin|DI_A_Pin|SMPS_EN_Pin|SMPS_V1_Pin
+                          |SMPS_SW_Pin|DI_B_Pin|DI_C_Pin|DI_D_Pin
+                          |DI_E_Pin|DI_F_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
@@ -218,8 +238,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SMPS_EN_Pin SMPS_V1_Pin SMPS_SW_Pin */
-  GPIO_InitStruct.Pin = SMPS_EN_Pin|SMPS_V1_Pin|SMPS_SW_Pin;
+  /*Configure GPIO pins : DI_G_Pin DI_A_Pin SMPS_EN_Pin SMPS_V1_Pin
+                           SMPS_SW_Pin DI_B_Pin DI_C_Pin DI_D_Pin
+                           DI_E_Pin DI_F_Pin */
+  GPIO_InitStruct.Pin = DI_G_Pin|DI_A_Pin|SMPS_EN_Pin|SMPS_V1_Pin
+                          |SMPS_SW_Pin|DI_B_Pin|DI_C_Pin|DI_D_Pin
+                          |DI_E_Pin|DI_F_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +43,7 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+int pressed = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,7 +63,7 @@ static void MX_USART2_UART_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main()
+int main(void)
 {
 
   /* USER CODE BEGIN 1 */
@@ -95,20 +95,19 @@ int main()
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  char		str[81] = {'\0'};
-  uint16_t	str_len = 0;
-  int		nblink = 0; // number of blinks
-
   while (1)
   {
+	  pressed = HAL_GPIO_Read_Pin(B1_GPIO_port, B1_Pin);
+
+	  if (pressed)
+	  {
+		  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+	  }
+	  else
+	  {
+
+	  }
     /* USER CODE END WHILE */
-	  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
-	  HAL_Delay(200);
-	  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
-	  nblink++;
-	  str_len = sprintf(str, "Blinky has succeeded %d times! \r\n", nblinky);
-	  HAL_UART_Transmit(&huart2, (uint8_t*) str, str_len, HAL_MAX_DELAY);
-	  HAL_Delay(800);
 
     /* USER CODE BEGIN 3 */
   }
