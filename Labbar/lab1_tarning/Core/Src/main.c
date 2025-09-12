@@ -51,14 +51,80 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
-int is_blue_button_pressed()
-{
-	return 0;
-}
+int is_blue_button_pressed();
+void put_die_dots(uint8_t die_nbr);
+//void dot_state
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// returns 1 if blue putton is pressed
+// returns 0 if blue buttom is not pressed
+int is_blue_button_pressed()
+{
+	return(GPIOC->IDR & B1_Pin) > 0  ? 1 : 0;
+
+}
+
+void put_die_dots(uint8_t die_nbr)
+{
+	HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_F_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_RESET);
+
+	switch(die_nbr)
+	{
+		case 1:
+			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
+			break;
+
+		case 2:
+			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_F_Pin, GPIO_PIN_SET);
+			break;
+
+		case 3:
+			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_SET);
+			break;
+
+		case 4:
+			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_c_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_SET);
+			break;
+
+		case 5:
+			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_D_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_SET);
+			break;
+
+		case 6:
+			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_B_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_F_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_SET);
+			break;
+
+		default:
+			return;
+			break;
+	}
+}
+
 
 /* USER CODE END 0 */
 
@@ -98,22 +164,26 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+  uint8_t die_value = 1;
   while (1)
   {
-	  // pressed = HAL_GPIO_Read_Pin(B1_GPIO_port, B1_Pin);
 
-	  GPIOB -> MODER;
+	  //pressed = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
 
-	  if (pressed)
+	  //uint32_t reg_reading = GPIOB->IDR;
+
+	  HAL_Delay(1);
+
+	  if (is_blue_button_pressed())
 	  {
-		  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(GPIOB, LD4_Pin, GPIO_PIN_SET);
+		  die_value = ((die_value) % 6) + 1;
 	  }
 	  else
 	  {
-		  GPIO_TypeDef* ld4_gpio = GPIOB;
-		  unit16_t		ld4_pin_nbr = 13;
-		  unit16_t		ld4_pin		= 0x01 << ld4_pin_nbr;
-		  HAL_GPIO_WritePin(ld4_gpio, ld4_pin, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(GPIOB, LD4_Pin, GPIO_PIN_RESET);
+		  put_die_dots(die_value);
 	  }
     /* USER CODE END WHILE */
 
@@ -225,6 +295,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, DI_G_Pin|DI_A_Pin|SMPS_EN_Pin|SMPS_V1_Pin
                           |SMPS_SW_Pin|DI_B_Pin|DI_C_Pin|DI_D_Pin
                           |DI_E_Pin|DI_F_Pin, GPIO_PIN_RESET);
@@ -237,6 +311,15 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PC0 PC1 PC2 PC3
+                           PC7 PC8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_7|GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : DI_G_Pin DI_A_Pin SMPS_EN_Pin SMPS_V1_Pin
                            SMPS_SW_Pin DI_B_Pin DI_C_Pin DI_D_Pin
@@ -261,6 +344,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD4_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF15_EVENTOUT;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 

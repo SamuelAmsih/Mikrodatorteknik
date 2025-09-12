@@ -1,0 +1,40 @@
+2025-09-12 09:51:19,263 [INFO] WebApp:194 - Connection lost
+2025-09-12 09:51:24,215 [INFO] WebApp:191 - Connection restablished
+2025-09-12 09:51:25,759 [INFO] WebApp:194 - Connection lost
+2025-09-12 09:51:25,867 [INFO] WebApp:191 - Connection restablished
+2025-09-12 09:51:34,381 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 618588384 Bytes (775946240)
+2025-09-12 09:51:39,947 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 641132768 Bytes (775946240)
+2025-09-12 09:51:43,397 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 521666560 Bytes (875560960)
+2025-09-12 09:51:45,128 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: NVIC
+2025-09-12 09:51:45,129 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: USART
+2025-09-12 09:51:45,129 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: SYS
+2025-09-12 09:51:45,131 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: GPIO
+2025-09-12 09:51:45,131 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: RCC
+2025-09-12 09:51:45,141 [INFO] CodeGenerator:892 - code generatio: config db path: C:\ST\STM32CubeIDE_1.19.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.15.0.202507011659\\db\
+2025-09-12 09:51:45,885 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\license.tmp_save
+2025-09-12 09:51:48,074 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\license.tmp
+2025-09-12 09:51:48,948 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\gpio.tmp_save
+2025-09-12 09:51:49,524 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\gpio.tmp
+2025-09-12 09:51:50,600 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\stm32l4xx_it.c_save
+2025-09-12 09:51:51,021 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\stm32l4xx_it.c
+2025-09-12 09:51:51,051 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\stm32l4xx_it.h_save
+2025-09-12 09:51:51,295 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\stm32l4xx_it.h
+2025-09-12 09:51:51,347 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\stm32l4xx_hal_msp.c_save
+2025-09-12 09:51:51,715 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\stm32l4xx_hal_msp.c
+2025-09-12 09:51:51,729 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\system.tmp_save
+2025-09-12 09:51:51,865 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\MXTmpFiles\system.tmp
+2025-09-12 09:51:51,899 [INFO] CodeEngine:321 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\stm32l4xx_hal_conf.h_save
+2025-09-12 09:51:52,041 [INFO] CodeEngine:345 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\stm32l4xx_hal_conf.h
+2025-09-12 09:51:52,162 [INFO] ApiDbMcu:532 - Load IP Config File for USART2
+2025-09-12 09:51:52,173 [INFO] ApiDbMcu:532 - Load IP Config File for RCC
+2025-09-12 09:51:52,212 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\main.h_save
+2025-09-12 09:51:52,549 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Inc\main.h
+2025-09-12 09:51:52,585 [INFO] CodeEngine:265 - oldGeneratedFile, C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\main.c_save
+2025-09-12 09:51:53,164 [INFO] CodeEngine:289 - Generated code: C:\Code\Mikrodatorteknik\Labbar\lab1_tarning\Core\Src\main.c
+2025-09-12 09:51:54,598 [INFO] ProjectBuilder:3606 - Time for Copy HAL[1] : 736mS.
+2025-09-12 09:51:54,611 [INFO] ProjectBuilder:5216 - Project Generator version: 4.7.0-B52
+2025-09-12 09:51:54,760 [INFO] ConfigFileManager:1595 - The Die is : DIE435
+2025-09-12 09:51:54,802 [INFO] ApiDbMcu:532 - Load IP Config File for FATFS
+2025-09-12 09:51:54,814 [INFO] ApiDbMcu:532 - Load IP Config File for FREERTOS
+2025-09-12 09:51:54,839 [INFO] ApiDbMcu:532 - Load IP Config File for TOUCHSENSING
+2025-09-12 09:51:54,852 [INFO] ApiDbMcu:532 - Load IP Config File for USB_DEVICE
