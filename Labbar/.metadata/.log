@@ -470,3 +470,66 @@ org.eclipse.core.runtime.CoreException: Setup exceptions
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-09-11 15:57:27.223
 !MESSAGE Existing sessions are:
+!SESSION 2025-09-12 13:12:58.240 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-12 13:13:38.672
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-12 13:13:38.680
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-12 13:13:56.956
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2025-09-12 13:51:42.846
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@117e0723): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function java.lang.Exception: Cannot find bounds of current function' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2025-09-12 13:51:42.846
+!MESSAGE Failed to execute MI command:
+-exec-next 1
+Error message from debugger back end:
+Cannot find bounds of current function
+!STACK 0
+java.lang.Exception: Cannot find bounds of current function
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1024)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:853)
+!SESSION 2025-09-16 13:44:25.333 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-16 13:44:43.313
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-16 13:44:43.320
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-16 13:44:56.095
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-16 13:48:44.650
+!MESSAGE Indexed 'Lab2_Trafikljus' (23 sources, 82 headers) in 8.8 sec: 5,348 declarations; 28,158 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
+!SESSION 2025-09-16 13:55:13.290 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-16 13:55:28.273
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-16 13:55:28.276
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-16 13:55:38.747
+!MESSAGE Started RMI Server, listening on port 41337

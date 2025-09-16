@@ -44,6 +44,9 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 int pressed = 0;
+const uint16_t sseg[10] = {0x0, 0x6, 0x9B, 0x8F, 0xC6, 0xCD, 0xDD, 0x7, 0xDF, 0xC7};
+const uint16_t sseg_err =0x1AC;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -53,6 +56,8 @@ static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 int is_blue_button_pressed();
 void put_die_dots(uint8_t die_nbr);
+void put_on_sseg(uint16_t dec_nbr);
+void write(uint16_t pin, int set);
 //void dot_state
 
 /* USER CODE END PFP */
@@ -65,7 +70,6 @@ void put_die_dots(uint8_t die_nbr);
 int is_blue_button_pressed()
 {
 	return(GPIOC->IDR & B1_Pin) > 0  ? 1 : 0;
-
 }
 
 void put_die_dots(uint8_t die_nbr)
@@ -97,7 +101,7 @@ void put_die_dots(uint8_t die_nbr)
 
 		case 4:
 			HAL_GPIO_WritePin(GPIOA, DI_A_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, DI_c_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, DI_C_Pin, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOA, DI_E_Pin, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOA, DI_G_Pin, GPIO_PIN_SET);
 			break;
@@ -125,6 +129,25 @@ void put_die_dots(uint8_t die_nbr)
 	}
 }
 
+void put_on_sseg(uint16_t dec_nbr)
+{
+	uint16_t chosen = sseg[dec_nbr];
+	uint16_t all	= 0xFFFF;
+	write(all, 0);
+	write(chosen, 1);
+
+}
+void write(uint16_t pin, int set)
+{
+	if(set)
+	{
+		GPIOC -> ODR |= pin;
+	}
+	else
+	{
+		GPIOC -> ODR &= ~pin;
+	}
+}
 
 /* USER CODE END 0 */
 
@@ -165,7 +188,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  uint8_t die_value = 1;
+  uint8_t die_value = 0;
   while (1)
   {
 
@@ -184,6 +207,7 @@ int main(void)
 	  {
 		  HAL_GPIO_WritePin(GPIOB, LD4_Pin, GPIO_PIN_RESET);
 		  put_die_dots(die_value);
+		  put_on_sseg(die_value);
 	  }
     /* USER CODE END WHILE */
 
@@ -296,7 +320,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
-                          |GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
+                          |GPIO_PIN_4|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, DI_G_Pin|DI_A_Pin|SMPS_EN_Pin|SMPS_V1_Pin
@@ -313,9 +337,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC0 PC1 PC2 PC3
-                           PC7 PC8 */
+                           PC4 PC6 PC7 PC8 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
-                          |GPIO_PIN_7|GPIO_PIN_8;
+                          |GPIO_PIN_4|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
