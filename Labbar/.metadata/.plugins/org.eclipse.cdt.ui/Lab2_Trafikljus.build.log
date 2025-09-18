@@ -1,16 +1,10 @@
-16:59:24 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
+16:09:43 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
 make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:217:33: error: 'tick_left_in_state' undeclared (first use in this function)
-  217 |                                 tick_left_in_state = 2500;
-      |                                 ^~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:217:33: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/main.c:202:7: warning: unused variable 'last_press' [-Wunused-variable]
-  202 |   int last_press = curr_press;
-      |       ^~~~~~~~~~
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-size  Lab2_Trafikljus.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12616	     12	   1708	  14336	   3800	Lab2_Trafikljus.elf
+Finished building: default.size.stdout
+ 
 
-16:59:26 Build Failed. 2 errors, 1 warnings. (took 1s.973ms)
+16:09:44 Build Finished. 0 errors, 0 warnings. (took 323ms)
 
