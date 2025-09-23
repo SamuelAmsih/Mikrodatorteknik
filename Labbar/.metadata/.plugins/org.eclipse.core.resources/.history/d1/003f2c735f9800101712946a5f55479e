@@ -67,10 +67,6 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 int pressed = 0;
-
-volatile uint32_t ticks_left_in_state = 0;
-volatile int timeout_armed = 0;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,9 +85,6 @@ void evq_push_back(enum event e);
 enum event evq_pop_front();
 
 void HAL_GPIO_EXIT_CALLBACK(uint16_t GPIO_Pin);
-
-void my_systick_handler();
-
 
 
 /* USER CODE END PFP */
@@ -144,7 +137,7 @@ enum event evq_pop_front()
 	return e;
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+void HAL_GPIO_EXIT_CALLBACK(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == B1_Pin)
 	{
@@ -156,32 +149,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			return;
 			last_ms = now;
 		}
-
-		evq_push_back(ev_button_push);
 	}
 }
 
-int systick_count = 0;
-
-void my_systick_handler()
-{
-	systick_count++;
-	if (systick_count == 1000)
-	{
-		HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-		systick_count = 0;
-	}
-
-	if (timeout_armed && ticks_left_in_state > 0)
-	{
-		ticks_left_in_state--;
-		if (ticks_left_in_state == 0)
-		{
-			evq_push_back(ev_state_timeout);
-			timeout_armed = 0;
-		}
-	}
-}
 
 void set_traffic_light(enum state s)
 {
@@ -320,7 +290,6 @@ int main(void)
 
   set_traffic_light(st);
   evq_init();
-  ticks_left_in_state = 0;
 
 
   while (1)
@@ -367,8 +336,7 @@ int main(void)
 			if(ev == ev_button_push){
 				ev = ev_none;
 				st = s_cars_stop;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 
 			}
@@ -379,8 +347,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_people_go;
-				ticks_left_in_state = 10000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 10000;
 				set_traffic_light(st);
 			}
 
@@ -391,8 +358,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_people_stop;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
@@ -403,8 +369,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_cars_wait;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
@@ -414,8 +379,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_cars_go;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
@@ -425,8 +389,7 @@ int main(void)
 			if(ev == ev_button_push){
 				ev = ev_none;
 				st = s_pushed_wait;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
@@ -436,8 +399,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_cars_stopping;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
@@ -447,8 +409,7 @@ int main(void)
 			if(ev == ev_state_timeout){
 				ev = ev_none;
 				st = s_cars_stop;
-				ticks_left_in_state = 2000;
-				timeout_armed = (ticks_left_in_state > 0);
+				//ticks_left_in_state = 2000;
 				set_traffic_light(st);
 			}
 
