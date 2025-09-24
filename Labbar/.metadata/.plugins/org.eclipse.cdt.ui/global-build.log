@@ -1,112 +1,21 @@
-12:03:03 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
+16:21:07 **** Incremental Build of configuration Debug for project Lab3_klocka_och_knapp ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Lab2_Trafikljus.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab2_Trafikljus\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2_Trafikljus.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab2_Trafikljus.elf
+arm-none-eabi-gcc -o "Lab3_klocka_och_knapp.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab3_klocka_och_knapp\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab3_klocka_och_knapp.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab3_klocka_och_knapp.elf
  
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-arm-none-eabi-objdump -h -S Lab2_Trafikljus.elf  > "Lab2_Trafikljus.list"
+arm-none-eabi-size  Lab3_klocka_och_knapp.elf 
+arm-none-eabi-objdump -h -S Lab3_klocka_och_knapp.elf  > "Lab3_klocka_och_knapp.list"
    text	   data	    bss	    dec	    hex	filename
-  13096	     12	   1740	  14848	   3a00	Lab2_Trafikljus.elf
+  17852	     92	   2036	  19980	   4e0c	Lab3_klocka_och_knapp.elf
 Finished building: default.size.stdout
  
-Finished building: Lab2_Trafikljus.list
+Finished building: Lab3_klocka_och_knapp.list
  
-12:03:06 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
+16:21:10 **** Incremental Build of configuration Debug for project Lab3_klocka_och_knapp ****
 make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
+arm-none-eabi-size  Lab3_klocka_och_knapp.elf 
    text	   data	    bss	    dec	    hex	filename
-  13096	     12	   1740	  14848	   3a00	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-12:03:16 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13096	     12	   1740	  14848	   3a00	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-12:07:20 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
-arm-none-eabi-gcc -o "Lab2_Trafikljus.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab2_Trafikljus\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2_Trafikljus.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab2_Trafikljus.elf
- 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-arm-none-eabi-objdump -h -S Lab2_Trafikljus.elf  > "Lab2_Trafikljus.list"
-   text	   data	    bss	    dec	    hex	filename
-  13368	     12	   1740	  15120	   3b10	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-Finished building: Lab2_Trafikljus.list
- 
-12:07:34 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13368	     12	   1740	  15120	   3b10	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-12:08:58 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Lab2_Trafikljus.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab2_Trafikljus\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2_Trafikljus.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab2_Trafikljus.elf
- 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-arm-none-eabi-objdump -h -S Lab2_Trafikljus.elf  > "Lab2_Trafikljus.list"
-   text	   data	    bss	    dec	    hex	filename
-  13368	     12	   1740	  15120	   3b10	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-Finished building: Lab2_Trafikljus.list
- 
-12:09:11 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13368	     12	   1740	  15120	   3b10	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-12:09:44 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13368	     12	   1740	  15120	   3b10	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-12:10:08 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Lab2_Trafikljus.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab2_Trafikljus\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab2_Trafikljus.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab2_Trafikljus.elf
- 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-arm-none-eabi-objdump -h -S Lab2_Trafikljus.elf  > "Lab2_Trafikljus.list"
-   text	   data	    bss	    dec	    hex	filename
-  13400	     12	   1748	  15160	   3b38	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-Finished building: Lab2_Trafikljus.list
- 
-12:10:16 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13400	     12	   1748	  15160	   3b38	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-13:21:56 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13400	     12	   1748	  15160	   3b38	Lab2_Trafikljus.elf
-Finished building: default.size.stdout
- 
-13:22:11 **** Incremental Build of configuration Debug for project Lab2_Trafikljus ****
-make -j16 all 
-arm-none-eabi-size  Lab2_Trafikljus.elf 
-   text	   data	    bss	    dec	    hex	filename
-  13400	     12	   1748	  15160	   3b38	Lab2_Trafikljus.elf
+  17852	     92	   2036	  19980	   4e0c	Lab3_klocka_och_knapp.elf
 Finished building: default.size.stdout
  
