@@ -69,13 +69,6 @@ volatile uint16_t button_exti_count = 0;      // antal flanker (inkl studs)
 volatile uint32_t last_flank_time = 0;        // senaste tick då interrupt hände
 volatile uint8_t  flank_pending = 0;          // flagga att vi väntar på debounce
 
-volatile uint8_t last_tick = 0; 			  // sneste tick
-
-volatile uint8_t seconds = 0;
-volatile uint8_t minutes = 0;
-volatile uint8_t hours = 0;
-volatile uint8_t colon_on = 0;
-
 uint16_t button_debounced_count = 0;          // riktiga knapptryck
 
 
@@ -123,35 +116,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_TIM_PeriodElapsedCallback(htim2)
 {
 
-  if (htim->Instance == TIM2)
-  {
-
-	colon_on = !colon_on;
-	last_tick++;
-	if (last_tick == 2) {
-		last_tick = 0;
-
-		seconds++;
-		if (seconds > 59) {
-			seconds = 0;
-			minutes++;
-
-		}
-		  if (minutes > 59) {
-			  minutes = 0;
-		  	  hours ++;
-
-		  }
-			if (hours > 23) {
-				hours = 0;
-			}
-		}
-	}
 }
-
 
 
 #define BOUNCE_DELAY_MS 4
@@ -171,18 +139,25 @@ void button_mode()
                 if (pressed)
                 {
                     button_debounced_count++;
+
                 }
                 flank_pending = 0;
             }
         }
 
+
+
+
         if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET)
         {
             qs_put_big_num(button_debounced_count);
+
+
         }
         else
         {
             qs_put_big_num(button_exti_count);
+
         }
     }
 }
@@ -191,16 +166,31 @@ void button_mode()
 
 void clock_mode()
 {
+  uint8_t hours = 23;
+  uint8_t minutes = 59;
+  uint8_t seconds = 45;
 
-	seconds = 55;
-	minutes = 59;
-  hours =23;
-	colon_on = 0;
 
-  // räknar tiden
-	HAL_TIM_Base_Start_IT(&htim2);
+  //uint32_t last_tick = HAL_GetTick();
+
+  uint8_t colon_on = 0;
+  uint32_t colon_toggle = HAL_GetTick();
+
   while (1)
   {
+    uint32_t now = HAL_GetTick();
+
+    // räknar tiden
+
+
+    // toggla kolon varje 500 ms
+
+    if((now - colon_toggle) >= 500)
+    {
+      colon_toggle += 500;
+      colon_on = !colon_on;
+    }
+
     if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
     {
     	// visa hours och minutes
