@@ -194,7 +194,7 @@ void clock_mode()
 
 	seconds = 55;
 	minutes = 59;
-  hours =23;
+    hours =23;
 	colon_on = 0;
 
   // räknar tiden

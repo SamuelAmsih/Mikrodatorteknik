@@ -1,4 +1,4 @@
-13:45:21 **** Build of configuration Debug for project lab1_tarning ****
+16:44:24 **** Build of configuration Debug for project lab1_tarning ****
 make -j16 all 
 arm-none-eabi-size  lab1_tarning.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  lab1_tarning.elf
 Finished building: default.size.stdout
  
 
-13:45:22 Build Finished. 0 errors, 0 warnings. (took 915ms)
+16:44:25 Build Finished. 0 errors, 0 warnings. (took 1s.277ms)
 

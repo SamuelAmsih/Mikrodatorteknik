@@ -1,5 +1,7 @@
 
 #include "lcd.h"
+#include "string.h"
+
 
 // first:   D7 D6 D5 D4 BT E  RW RS
 // second:  D3 D2 D1 D0 BT E  RW RS
@@ -11,7 +13,7 @@
  */
 void My_Delay(uint32_t mysec)
 {
-//	HAL_Delay( 1 + (mysec / 1000) );
+	HAL_Delay( 1 + (mysec / 1000) );
 }
 
 #define BIT_BT   0x08
@@ -125,35 +127,59 @@ void TextLCD_SetBacklightFlag(GPIO_PinState bt)
 
 void TextLCD_Home		(TextLCDType * hlcd)
 {
+	RW = GPIO_PIN_RESET;
 
+	TextLCD_SendByte(hlcd, 0x02, GPIO_PIN_RESET);
+	My_Delay(1520);
 }
 
 
 void TextLCD_Clear		(TextLCDType * hlcd)
 {
+	RW = GPIO_PIN_RESET;
 
+	TextLCD_SendByte(hlcd, 0x01, GPIO_PIN_RESET);
 }
 
 void TextLCD_SetDDRAMAdr(TextLCDType * hlcd, uint8_t adr)
 {
+	RW = GPIO_PIN_RESET;
 
+	TextLCD_SendByte(hlcd, 0x80 | adr, GPIO_PIN_RESET);
+	My_Delay(50);
 }
 
 
 void TextLCD_Position	(TextLCDType * hlcd, int col, int row)
 {
+	RW = GPIO_PIN_RESET;
 
+	uint8_t adr = (row ? 0x40 : 0x00) + col;
+
+	TextLCD_SetDDRAMAdr(hlcd, adr);
+	My_Delay(50);
 }
 
 void TextLCD_PutChar	(TextLCDType * hlcd, char c)
 {
-
+	RW = GPIO_PIN_RESET;
+	TextLCD_SendByte(hlcd, c, 1);
+	My_Delay(50);
 }
 
 
 void TextLCD_PutStr		(TextLCDType * hlcd, char * str)
 {
+	RW = GPIO_PIN_RESET;
 
+	int len = strlen(str);
+	int i = 0;
+
+	while(i < len) {
+		char c = str[i];
+		TextLCD_PutChar(hlcd, c);
+		i++;
+	}
 }
 
 
