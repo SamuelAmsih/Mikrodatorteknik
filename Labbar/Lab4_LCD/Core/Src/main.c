@@ -185,6 +185,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   TextLCDType lcd;
   TextLCD_Init(&lcd, &hi2c1, 0x4E);
+  HAL_TIM_Base_Start_IT(&htim6);
+
 
   //char c = 0;
   //const char ASCII_CAPITAL_OFFSET = 'A';
@@ -217,7 +219,6 @@ int main(void)
 	}
 	*/
 	TextLCD_Position(&lcd, 8, 1);
-	HAL_TIM_Base_Start_IT(&htim6);
 	uart_print_cd(&huart2, &my_clock);
 
 	char str[10];
@@ -348,7 +349,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 4294966;
+  htim2.Init.Period = 4000000000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)

@@ -19,7 +19,9 @@ void My_Delay(uint32_t mysec)
 
 	TIM2->CR1 = 1;
 
-	while(TIM2->CNT < mysec){
+	uint32_t start = TIM2->CNT;
+
+	while(TIM2->CNT - start < mysec){
 
 	}
 
