@@ -1468,3 +1468,27 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.dsf 4 10005 2025-10-09 12:23:57.977
 !MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@3eafcf1c): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
+!SESSION 2025-10-09 13:03:09.482 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=sv_SE
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-10-09 13:03:17.026
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-10-09 13:03:17.027
+!MESSAGE Log4j2 initialized with config file C:\Code\Mikrodatorteknik\Labbar\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-10-09 13:03:22.570
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-09 13:05:43.551
+!MESSAGE Indexed 'Lab5_ADC' (23 sources, 82 headers) in 13.2 sec: 5,348 declarations; 28,158 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-09 13:06:43.788
+!MESSAGE Indexed 'Lab6_PWM' (23 sources, 82 headers) in 6.95 sec: 5,348 declarations; 28,158 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.006%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-10-09 14:56:03.238
+!MESSAGE Indexed 'Lab5_ADC' (28 sources, 94 headers) in 1.46 sec: 8,549 declarations; 66,625 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0027%)

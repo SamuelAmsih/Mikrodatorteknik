@@ -1,56 +1,28 @@
-12:26:18 **** Incremental Build of configuration Debug for project Lab4_LCD ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/lcd.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/lcd.d" -MT"Core/Src/lcd.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/lcd.o"
-arm-none-eabi-gcc -o "Lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab4_LCD\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab4_LCD.elf
- 
-arm-none-eabi-size  Lab4_LCD.elf 
-arm-none-eabi-objdump -h -S Lab4_LCD.elf  > "Lab4_LCD.list"
-   text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
-Finished building: default.size.stdout
- 
-Finished building: Lab4_LCD.list
- 
-12:27:05 **** Incremental Build of configuration Debug for project Lab4_LCD ****
+15:11:35 **** Incremental Build of configuration Debug for project Lab5_ADC ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L433xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Lab4_LCD.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab4_LCD\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab4_LCD.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Lab4_LCD.elf
+arm-none-eabi-gcc -o "Lab5_ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Code\Mikrodatorteknik\Labbar\Lab5_ADC\STM32L433RCTXP_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab5_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab5_ADC.elf
  
-arm-none-eabi-size  Lab4_LCD.elf 
-arm-none-eabi-objdump -h -S Lab4_LCD.elf  > "Lab4_LCD.list"
+arm-none-eabi-size  Lab5_ADC.elf 
+arm-none-eabi-objdump -h -S Lab5_ADC.elf  > "Lab5_ADC.list"
    text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
+  46068	    472	   2344	  48884	   bef4	Lab5_ADC.elf
 Finished building: default.size.stdout
  
-Finished building: Lab4_LCD.list
+Finished building: Lab5_ADC.list
  
-12:27:23 **** Incremental Build of configuration Debug for project Lab4_LCD ****
+15:11:41 **** Incremental Build of configuration Debug for project Lab5_ADC ****
 make -j16 all 
-arm-none-eabi-size  Lab4_LCD.elf 
+arm-none-eabi-size  Lab5_ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
+  46068	    472	   2344	  48884	   bef4	Lab5_ADC.elf
 Finished building: default.size.stdout
  
-12:27:38 **** Incremental Build of configuration Debug for project Lab4_LCD ****
+15:11:56 **** Incremental Build of configuration Debug for project Lab5_ADC ****
 make -j16 all 
-arm-none-eabi-size  Lab4_LCD.elf 
+arm-none-eabi-size  Lab5_ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
-Finished building: default.size.stdout
- 
-12:34:38 **** Incremental Build of configuration Debug for project Lab4_LCD ****
-make -j16 all 
-arm-none-eabi-size  Lab4_LCD.elf 
-   text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
-Finished building: default.size.stdout
- 
-12:34:55 **** Incremental Build of configuration Debug for project Lab4_LCD ****
-make -j16 all 
-arm-none-eabi-size  Lab4_LCD.elf 
-   text	   data	    bss	    dec	    hex	filename
-  20892	     96	   2288	  23276	   5aec	Lab4_LCD.elf
+  46068	    472	   2344	  48884	   bef4	Lab5_ADC.elf
 Finished building: default.size.stdout
  
