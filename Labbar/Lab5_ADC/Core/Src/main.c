@@ -58,14 +58,14 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM2_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 uint32_t reading = 0;
 TextLCDType lcd;
-uint16_t x = 0;
+uint16_t i = 0;
 uint8_t	ADCSET  = 0;
 
 
@@ -77,7 +77,7 @@ int adc_buf_ix = 0;
 #define JOY_X_IX 0
 #define JOY_Y_IX 1
 #define FOTO_IX 2
-float xi;
+float x;
 float y;
 float light;
 /* USER CODE END PFP */
@@ -95,24 +95,28 @@ uint16_t read_one_adc_value(ADC_HandleTypeDef * hadc)
 }
 
 
-float normalize_12bit(uint16_t x) {
-	return (float)x / 4095.0f;
+float normalize_12bit(uint16_t i)
+{
+	return (float)i / 4095.0f;
 }
 
 
-float normalize_12bit_posneg(uint16_t x) {
-    float val = ((float)x - 2048.0f) / 2047.0f;
-    if(val >= 0.97f) val = 1.0f;
-    if(val <= -0.97f) val = -1.0f;
+float normalize_12bit_posneg(uint16_t i)
+{
+    float val = ((float)i - 2048.0f) / 2047.0f;
+    if(val >= 0.95f) val = 1.0f;
+    if(val <= -0.95f) val = -1.0f;
     return val;
 }
 
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc){
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
 	if(hadc->Instance == ADC1){
-		static uint8_t value = 0;
-		adc_buffer[value] = HAL_ADC_GetValue(hadc);
-		value = (value +1 ) % ADC_BUF_SIZE;
+		static uint8_t val = 0;
+
+		adc_buffer[val] = HAL_ADC_GetValue(hadc);
+		val = (val +1 ) % ADC_BUF_SIZE;
 		ADCSET = 1;
 	}
 }
@@ -150,9 +154,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_TIM2_Init();
   MX_ADC1_Init();
   MX_I2C1_Init();
-  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   	  HAL_TIM_Base_Start(&htim2);
   	//uint16_t adc_val = read_one_adc_value(&hadc1);
@@ -168,17 +172,17 @@ int main(void)
 
 	  if(ADCSET)
 	  {
-	      xi = normalize_12bit_posneg(adc_buffer[JOY_X_IX]);
+	      x = normalize_12bit(adc_buffer[JOY_X_IX]);
 	      y = -normalize_12bit_posneg(adc_buffer[JOY_Y_IX]);
 	      light = 1.0f - normalize_12bit(adc_buffer[FOTO_IX]);
 
-	      char line[16];
+	      char line[17];
 	      TextLCD_Position(&lcd, 0, 0);
-	      sprintf(line, "X:%+.2f Y:%+.2f", xi, y);
+	      sprintf(line, "%+.2fx", x);
 	      TextLCD_PutStr(&lcd, line);
 
 	      TextLCD_Position(&lcd, 0,1);
-	      sprintf(line, "L:%0.3f       ", light);
+	      sprintf(line, "%+.2fy    %0.3fL", y, light);
 	      TextLCD_PutStr(&lcd, line);
 
 	      ADCSET = 0;
@@ -263,7 +267,7 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
@@ -387,7 +391,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 4294000000;
+  htim2.Init.Period = 4294967290;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
